@@ -8,40 +8,40 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textSize="25sp"
-        android:text="Fragment 1"
+        android:text="Fragment 4"
         android:layout_marginTop="40dp"
-        android:id="@+id/Fragment1Text"/>
+        android:id="@+id/Fragment4Text"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Fragment1Text"
+        android:layout_below="@+id/Fragment4Text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn1fragment1"
+        android:id="@+id/btn1fragment4"
         android:text="Go to fragment 1"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn1fragment1"
+        android:layout_below="@+id/btn1fragment4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn2fragment1"
+        android:id="@+id/btn2fragment4"
         android:text="Go to fragment 2"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn2fragment1"
+        android:layout_below="@+id/btn2fragment4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn3fragment1"
+        android:id="@+id/btn3fragment4"
         android:text="Go to fragment 3"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn3fragment1"
+        android:layout_below="@+id/btn3fragment4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn4fragment1"
+        android:id="@+id/btn4fragment4"
         android:text="Go to fragment 4"/>
 
 </RelativeLayout>
