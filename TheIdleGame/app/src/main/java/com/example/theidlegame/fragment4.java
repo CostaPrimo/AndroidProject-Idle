@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 public class fragment4 extends Fragment {
 
-    private static final String TAG = "Fragment 1";
+    private static final String TAG = "Fragment 4";
 
     private Button btn1fragment4;
     private Button btn2fragment4;
