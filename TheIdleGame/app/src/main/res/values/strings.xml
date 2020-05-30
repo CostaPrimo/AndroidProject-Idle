@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TheIdleGame</string>
+    <string name="GatheringFragmentName">Gathering</string>
+    <string name="ResearchFragmentName">Research</string>
+    <string name="MiningFragmentName">Mining</string>
+    <string name="ResourceFragmentName">Resources</string>
+    <string name="GoToGatheringName">Go To Gathering</string>
+    <string name="GoToResearchName">Go To Research</string>
+    <string name="GoToMiningName">Go To Mining</string>
+    <string name="GoToResourcesName">Go To Resources</string>
+    <string name="GatherGrassName">Gather Grass</string>
+    <string name="GatherWoodName">Collect Wood</string>
+    <string name="CollectWaterName">Collect Water</string>
+    <string name="CollectGrassButtonName">Collect Grass</string>
 </resources>

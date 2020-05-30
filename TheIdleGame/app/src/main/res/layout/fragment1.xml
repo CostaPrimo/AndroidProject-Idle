@@ -7,41 +7,116 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="25sp"
-        android:text="Fragment 1"
-        android:layout_marginTop="40dp"
+        android:textSize="40sp"
+        android:text="@string/GatheringFragmentName"
+        android:layout_marginTop="10dp"
         android:id="@+id/Fragment1Text"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Fragment1Text"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/btn1fragment1"
-        android:text="Go to fragment 1"/>
+        android:text="@string/GoToGatheringName"/>
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn1fragment1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:id="@+id/btn2fragment1"
-        android:text="Go to fragment 2"/>
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Fragment1Text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/GoToResearchName" />
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn2fragment1"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn3fragment1"
+        android:text="@string/GoToMiningName"/>
+
+    <Button
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn2fragment1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn3fragment1"
-        android:text="Go to fragment 3"/>
+        android:layout_alignParentEnd="true"
+        android:id="@+id/btn4fragment1"
+        android:text="@string/GoToResourcesName"/>
+
     <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn4fragment1"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/gathergrassbtn"
+        android:text="@string/GatherGrassName"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gathergrassbtn"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/collectgrassbtn"
+        android:text="@string/CollectGrassButtonName"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/collectgrassbtn"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/gatherwoodbtn"
+        android:text="@string/GatherWoodName"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gatherwoodbtn"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/collectwaterbtn"
+        android:text="@string/CollectWaterName"/>
+    
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/collectwaterbtn"
+        android:layout_marginTop="100dp"
+        android:text="Buy Zebra?1?"
+        android:id="@+id/zebrabutton"
+        />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn3fragment1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/btn4fragment1"
-        android:text="Go to fragment 4"/>
+        android:layout_toEndOf="@+id/collectgrassbtn"
+        android:layout_alignBaseline="@+id/collectgrassbtn"
+        android:layout_marginStart="5dp"
+        android:id="@+id/GatherGrassLabel"
+        android:text="0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/gatherwoodbtn"
+        android:layout_alignBaseline="@+id/gatherwoodbtn"
+        android:layout_marginStart="5dp"
+        android:id="@+id/GatherWoodLabel"
+        android:text="0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/collectwaterbtn"
+        android:layout_alignBaseline="@+id/collectwaterbtn"
+        android:layout_marginStart="5dp"
+        android:id="@+id/CollectWaterLabel"
+        android:text="0"/>
 
 </RelativeLayout>

@@ -1,47 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout   xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent">
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="25sp"
-        android:text="Fragment 2"
-        android:layout_marginTop="40dp"
+        android:textSize="40sp"
+        android:text="@string/ResearchFragmentName"
+        android:layout_marginTop="10dp"
         android:id="@+id/Fragment2Text"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Fragment2Text"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/btn1fragment2"
-        android:text="Go to fragment 1"/>
+        android:text="@string/GoToGatheringName"/>
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn1fragment2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:id="@+id/btn2fragment2"
-        android:text="Go to fragment 2"/>
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Fragment2Text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/GoToResearchName" />
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn2fragment2"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn3fragment2"
+        android:text="@string/GoToMiningName"/>
+    <Button
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn2fragment2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn3fragment2"
-        android:text="Go to fragment 3"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn3fragment2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
         android:id="@+id/btn4fragment2"
-        android:text="Go to fragment 4"/>
+        android:text="@string/GoToResourcesName"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn4fragment2"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:id="@+id/upgrade1"
+        android:text="Upgrade"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn4fragment2"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/upgrade2"
+        android:text="Upgrade"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/upgrade1"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:id="@+id/upgrade3"
+        android:text="Upgrade"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/upgrade1"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/upgrade4"
+        android:text="Upgrade"
+        />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/upgrade3"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="50dp"
+        android:id="@+id/upgrade5"
+        android:text="Upgrade"
+        />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/upgrade3"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/upgrade6"
+        android:text="Upgrade"
+        />
 
 </RelativeLayout>

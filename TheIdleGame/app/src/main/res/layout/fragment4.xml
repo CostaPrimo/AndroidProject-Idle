@@ -1,47 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout   xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent">
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="25sp"
-        android:text="Fragment 4"
-        android:layout_marginTop="40dp"
+        android:textSize="40sp"
+        android:text="@string/ResourceFragmentName"
+        android:layout_marginTop="10dp"
         android:id="@+id/Fragment4Text"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Fragment4Text"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:id="@+id/btn1fragment4"
-        android:text="Go to fragment 1"/>
+        android:text="@string/GoToGatheringName"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn1fragment4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:id="@+id/btn2fragment4"
-        android:text="Go to fragment 2"/>
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/Fragment4Text"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:text="@string/GoToResearchName" />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn2fragment4"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn3fragment4"
+        android:text="@string/GoToMiningName"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/btn2fragment4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn3fragment4"
-        android:text="Go to fragment 3"/>
-    <Button
+        android:id="@+id/btn4fragment4"
+        android:text="@string/GoToResourcesName"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn4fragment4"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Grass:"
+        android:id="@+id/grasslabel"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn3fragment4"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn4fragment4"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/grasslabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/grassvalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grasslabel"
         android:layout_marginTop="10dp"
-        android:id="@+id/btn4fragment4"
-        android:text="Go to fragment 4"/>
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Wood:"
+        android:id="@+id/woodlabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grasslabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/woodlabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/woodvalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/woodlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Water:"
+        android:id="@+id/waterlabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/woodlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/waterlabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/watervalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/waterlabel"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Stone:"
+        android:id="@+id/rocklabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/waterlabel"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/rocklabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/rockvalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rocklabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Copper:"
+        android:id="@+id/copperlabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rocklabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/copperlabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/coppervalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/copperlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Iron:"
+        android:id="@+id/ironlabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/copperlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/ironlabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/ironvalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ironlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Diamonds:"
+        android:id="@+id/diamondlabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ironlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/diamondlabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/diamondvalue"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diamondlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:textSize="20sp"
+        android:text="Titanium:"
+        android:id="@+id/titaniumlabel"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diamondlabel"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/titaniumlabel"
+        android:textSize="20sp"
+        android:text="0"
+        android:id="@+id/titaniumvalue"/>
 
 </RelativeLayout>
