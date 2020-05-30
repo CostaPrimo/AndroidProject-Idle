@@ -81,7 +81,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/collectwaterbtn"
         android:text="@string/CollectWaterName"/>
-    
+
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"

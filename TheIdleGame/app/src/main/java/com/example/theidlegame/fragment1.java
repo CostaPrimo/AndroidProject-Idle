@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,10 @@ public class fragment1 extends Fragment {
     private Button btn2fragment1;
     private Button btn3fragment1;
     private Button btn4fragment1;
+    private Button GatherGrass;
+    private TextView GrassLabel;
+
+    private int currentGrassCount;
 
     @Nullable
     @Override
@@ -28,6 +33,8 @@ public class fragment1 extends Fragment {
         btn2fragment1 = (Button) v.findViewById(R.id.btn2fragment1);
         btn3fragment1 = (Button) v.findViewById(R.id.btn3fragment1);
         btn4fragment1 = (Button) v.findViewById(R.id.btn4fragment1);
+        GatherGrass = (Button) v.findViewById(R.id.gathergrassbtn);
+        GrassLabel = (TextView) v.findViewById(R.id.GatherGrassLabel);
         Log.i("fragment created", "fragment1 onCreateView");
 
         btn1fragment1.setOnClickListener(new View.OnClickListener(){
@@ -58,7 +65,30 @@ public class fragment1 extends Fragment {
                 ((MainActivity)getActivity()).setViewPager(3);
             }
         });
+        GatherGrass.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String currentText = GrassLabel.getText().toString();
+                currentGrassCount = Integer.parseInt(currentText);
+                currentGrassCount++;
+                String returnText = currentGrassCount+"";
+                GrassLabel.setText(returnText);
+            }
+        });
 
         return v;
+    }
+
+    @Override
+    public void onPause() {
+        Log.i("fragment paused", "fragment 1 paused");
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        String returnText = currentGrassCount+"";
+        GrassLabel.setText(returnText);
+        super.onResume();
     }
 }
