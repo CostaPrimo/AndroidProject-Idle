@@ -20,6 +20,13 @@ public class fragment2 extends Fragment {
     private Button btn3fragment2;
     private Button btn4fragment2;
 
+    private Button upgrade1;
+    private Button upgrade2;
+    private Button upgrade3;
+    private Button upgrade4;
+    private Button upgrade5;
+    private Button upgrade6;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,7 +35,13 @@ public class fragment2 extends Fragment {
         btn2fragment2 = (Button) v.findViewById(R.id.btn2fragment2);
         btn3fragment2 = (Button) v.findViewById(R.id.btn3fragment2);
         btn4fragment2 = (Button) v.findViewById(R.id.btn4fragment2);
-        Log.i("fragment created", "fragment1 onCreateView");
+        upgrade1 = (Button) v.findViewById(R.id.upgrade1);
+        upgrade2 = (Button) v.findViewById(R.id.upgrade2);
+        upgrade3 = (Button) v.findViewById(R.id.upgrade3);
+        upgrade4 = (Button) v.findViewById(R.id.upgrade4);
+        upgrade5 = (Button) v.findViewById(R.id.upgrade5);
+        upgrade6 = (Button) v.findViewById(R.id.upgrade6);
+        Log.i("fragment created", "fragment2 onCreateView");
 
         btn1fragment2.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,7 +71,55 @@ public class fragment2 extends Fragment {
                 ((MainActivity)getActivity()).setViewPager(3);
             }
         });
+        upgrade1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
+        upgrade2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
+        upgrade3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
+        upgrade4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
+        upgrade5.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
+        upgrade6.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
 
         return v;
+    }
+    @Override
+    public void onPause() {
+        Log.i("fragment paused", "fragment 2 paused");
+        //TODO ADD SAVE TO DATABASE & TIME CHECK
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        //SetValuesCorrectly
+        super.onResume();
     }
 }
