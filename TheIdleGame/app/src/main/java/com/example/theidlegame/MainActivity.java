@@ -28,19 +28,22 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewpager){
         StatePagerAdapter adapter = new StatePagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new fragment1(), "Fragment 1");
+        adapter.addFragment(new Fragment(), "Dummy1");
         adapter.addFragment(new fragment2(), "Fragment 2");
+        adapter.addFragment(new Fragment(), "Dummy2");
         adapter.addFragment(new fragment3(), "Fragment 3");
+        adapter.addFragment(new Fragment(), "Dummy3");
         adapter.addFragment(new fragment4(), "Fragment 4");
         viewpager.setAdapter(adapter);
     }
 
-    public void resetBunde(){
+    public void resetBundle(){
         bundle = new Bundle();
     }
 
     public void passData(String key, CharSequence value){
         if(bundle==null){
-            resetBunde();
+            resetBundle();
             bundle.putCharSequence(key, value);
         }
         else{
@@ -50,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     public CharSequence accessData(String key){
         if(bundle==null){
-            return "";
+            return "0";
         }
         else {
             if (bundle.containsKey(key)) {
                 return bundle.getCharSequence(key);
             }
             else{
-                return "";
+                return "0";
             }
         }
     }

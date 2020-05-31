@@ -69,6 +69,11 @@ public class fragment3 extends Fragment {
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
+                ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
+                ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
+                ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
+                ((MainActivity)getActivity()).passData("diamonds", DiamondLabel.getText());
+                ((MainActivity)getActivity()).passData("titanium", TitaniumLabel.getText());
                 ((MainActivity)getActivity()).setViewPager(0);
             }
         });
@@ -76,21 +81,36 @@ public class fragment3 extends Fragment {
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
-                ((MainActivity)getActivity()).setViewPager(1);
+                ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
+                ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
+                ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
+                ((MainActivity)getActivity()).passData("diamonds", DiamondLabel.getText());
+                ((MainActivity)getActivity()).passData("titanium", TitaniumLabel.getText());
+                ((MainActivity)getActivity()).setViewPager(2);
             }
         });
         btn3fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
-                ((MainActivity)getActivity()).setViewPager(2);
+                ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
+                ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
+                ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
+                ((MainActivity)getActivity()).passData("diamonds", DiamondLabel.getText());
+                ((MainActivity)getActivity()).passData("titanium", TitaniumLabel.getText());
+                ((MainActivity)getActivity()).setViewPager(4);
             }
         });
         btn4fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
-                ((MainActivity)getActivity()).setViewPager(3);
+                ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
+                ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
+                ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
+                ((MainActivity)getActivity()).passData("diamonds", DiamondLabel.getText());
+                ((MainActivity)getActivity()).passData("titanium", TitaniumLabel.getText());
+                ((MainActivity)getActivity()).setViewPager(6);
             }
         });
         RockButton.setOnClickListener(new View.OnClickListener(){

@@ -54,21 +54,21 @@ public class fragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
-                ((MainActivity)getActivity()).setViewPager(1);
+                ((MainActivity)getActivity()).setViewPager(2);
             }
         });
         btn3fragment2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
-                ((MainActivity)getActivity()).setViewPager(2);
+                ((MainActivity)getActivity()).setViewPager(4);
             }
         });
         btn4fragment2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //Nagivate to fragment
-                ((MainActivity)getActivity()).setViewPager(3);
+                ((MainActivity)getActivity()).setViewPager(6);
             }
         });
         upgrade1.setOnClickListener(new View.OnClickListener(){

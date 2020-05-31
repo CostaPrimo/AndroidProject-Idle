@@ -1,6 +1,7 @@
 package com.example.theidlegame;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +64,8 @@ public class fragment1 extends Fragment {
             public void onClick(View v) {
                 //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("grass", GrassLabel.getText());
+                ((MainActivity)getActivity()).passData("wood", WoodLabel.getText());
+                ((MainActivity)getActivity()).passData("water", WaterLabel.getText());
                 ((MainActivity)getActivity()).setViewPager(0);
 
             }
@@ -72,7 +75,9 @@ public class fragment1 extends Fragment {
             public void onClick(View v) {
                 //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("grass", GrassLabel.getText());
-                ((MainActivity)getActivity()).setViewPager(1);
+                ((MainActivity)getActivity()).passData("wood", WoodLabel.getText());
+                ((MainActivity)getActivity()).passData("water", WaterLabel.getText());
+                ((MainActivity)getActivity()).setViewPager(2);
 
             }
         });
@@ -81,7 +86,9 @@ public class fragment1 extends Fragment {
             public void onClick(View v) {
                 //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("grass", GrassLabel.getText());
-                ((MainActivity)getActivity()).setViewPager(2);
+                ((MainActivity)getActivity()).passData("wood", WoodLabel.getText());
+                ((MainActivity)getActivity()).passData("water", WaterLabel.getText());
+                ((MainActivity)getActivity()).setViewPager(4);
 
             }
         });
@@ -90,7 +97,9 @@ public class fragment1 extends Fragment {
             public void onClick(View v) {
                 //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("grass", GrassLabel.getText());
-                ((MainActivity)getActivity()).setViewPager(3);
+                ((MainActivity)getActivity()).passData("wood", WoodLabel.getText());
+                ((MainActivity)getActivity()).passData("water", WaterLabel.getText());
+                ((MainActivity)getActivity()).setViewPager(6);
 
             }
         });
@@ -107,30 +116,49 @@ public class fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO
-                //IF Grass > x... do
                 currentGrassCount++;
                 returnText = currentGrassCount+"";
                 GrassLabel.setText(returnText);
+                if(currentGrassCount>=10 && !CollectWood.isClickable()){
+                    CollectWood.setClickable(true);
+                }
             }
         });
         CollectWood.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //TODO
-                //If Grass > y... do
-                currentWoodCount++;
-                returnText = currentWoodCount+"";
-                WoodLabel.setText(returnText);
+                if (currentGrassCount >= 10) {
+                    currentWoodCount++;
+                    currentGrassCount-=10;
+                    returnText = currentWoodCount + "";
+                    WoodLabel.setText(returnText);
+                    returnText = currentGrassCount+"";
+                    GrassLabel.setText(returnText);
+                }
+                if (currentGrassCount<10){
+                    CollectWood.setClickable(false);
+                }
+                if(currentWoodCount>=5 && !CollectWater.isClickable()){
+                    CollectWater.setClickable(true);
+                }
             }
         });
         CollectWater.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //TODO
-                //If wood > z... do
-                currentWaterCount++;
-                returnText = currentWaterCount+"";
-                WaterLabel.setText(returnText);
+                if(currentWoodCount>=5) {
+                    currentWaterCount++;
+                    returnText = currentWaterCount + "";
+                    WaterLabel.setText(returnText);
+                    currentWoodCount-=5;
+                    returnText = currentWoodCount+"";
+                    WoodLabel.setText(returnText);
+                }
+                if(currentWoodCount<5){
+                    CollectWater.setClickable(false);
+                }
             }
         });
         BuyZebra.setOnClickListener(new View.OnClickListener(){
@@ -140,6 +168,10 @@ public class fragment1 extends Fragment {
                 //If the planets are aligned...
                 returnText = "You Bought a Zebra";
                 BuyZebra.setText(returnText);
+                int tempint = Integer.parseInt(((MainActivity)getActivity()).accessData("titanium").toString());
+                tempint-=1000;
+                returnText = tempint+"";
+                ((MainActivity)getActivity()).passData("titanium", returnText);
             }
         });
         return v;
@@ -154,6 +186,20 @@ public class fragment1 extends Fragment {
 
     @Override
     public void onResume() {
+        if(currentGrassCount<10){
+            CollectWood.setClickable(false);
+        }
+        if(currentWoodCount<5){
+            CollectWater.setClickable(false);
+        }
+        int tempcount = Integer.parseInt(((MainActivity)getActivity()).accessData("titanium").toString());
+        if(tempcount<1000){
+            BuyZebra.setClickable(false);
+            BuyZebra.setBackgroundColor(Color.parseColor("#f1f1f1"));
+        }
+        else {
+            BuyZebra.setBackgroundColor(Color.parseColor("#aa0000"));
+        }
         //SetValuesCorrectly
         returnText = currentGrassCount+"";
         GrassLabel.setText(returnText);
