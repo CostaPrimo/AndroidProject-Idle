@@ -55,6 +55,7 @@ public class fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment3,container,false);
+        db = AppDatabase.getAppDatabase(getActivity());
         btn1fragment3 = (Button) v.findViewById(R.id.btn1fragment3);
         btn2fragment3 = (Button) v.findViewById(R.id.btn2fragment3);
         btn3fragment3 = (Button) v.findViewById(R.id.btn3fragment3);
@@ -125,6 +126,38 @@ public class fragment3 extends Fragment {
                 ((MainActivity)getActivity()).setViewPager(6);
             }
         });
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (db.miningDAO().countMiners() == 0){
+                    mining = new Mining();
+                    mining.key1 = "1";
+                    mining.stone = "0";
+                    mining.copper = "0";
+                    mining.iron = "0";
+                    mining.diamond = "0";
+                    mining.titanium = "0";
+                    db.miningDAO().insert(mining);
+                }
+                else{
+                    mining = db.miningDAO().getMiner();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                            RockLabel.setText(mining.stone);
+                            CopperLabel.setText(mining.copper);
+                            IronLabel.setText(mining.iron);
+                            DiamondLabel.setText(mining.diamond);
+                            TitaniumLabel.setText((mining.titanium));
+                        }
+                    });
+                }
+            }
+        });
+
+
         RockButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -171,54 +204,10 @@ public class fragment3 extends Fragment {
             }
         });
 
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                if (db.gatheringDAO().counGathers() == 0){
-                    mining = new Mining();
-                    mining.key1 = "1";
-                    mining.stone = "0";
-                    mining.copper = "0";
-                    mining.iron = "0";
-                    mining.diamond = "0";
-                    mining.titanium = "0";
-                    db.miningDAO().insert(mining);
-                }
-                else{
-                    mining = db.miningDAO().getMiner();
-                    RockLabel.setText(mining.stone);
-                    CopperLabel.setText(mining.copper);
-                    IronLabel.setText(mining.iron);
-                    DiamondLabel.setText(mining.diamond);
-                    TitaniumLabel.setText((mining.titanium));
-                }
-            }
-        });
-
         return v;
     }
 
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                String currentStone = RockLabel.getText().toString();
-                String currentCopper = CopperLabel.getText().toString();
-                String currentIron = IronLabel.getText().toString();
-                String currentDiamond = DiamondLabel.getText().toString();
-                String currentTitanium = TitaniumLabel.getText().toString();
-                mining.stone = currentStone;
-                mining.copper = currentCopper;
-                mining.iron = currentIron;
-                mining.diamond = currentDiamond;
-                mining.titanium = currentTitanium;
-                db.miningDAO().update(mining);
-            }
-        });
-    }
 
     @Override
     public void onPause() {
@@ -241,5 +230,26 @@ public class fragment3 extends Fragment {
         TitaniumLabel.setText(returnText);
         super.onResume();
 
+    }
+
+    @Override
+    public void onStop() {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                String currentStone = RockLabel.getText().toString();
+                String currentCopper = CopperLabel.getText().toString();
+                String currentIron = IronLabel.getText().toString();
+                String currentDiamond = DiamondLabel.getText().toString();
+                String currentTitanium = TitaniumLabel.getText().toString();
+                mining.stone = currentStone;
+                mining.copper = currentCopper;
+                mining.iron = currentIron;
+                mining.diamond = currentDiamond;
+                mining.titanium = currentTitanium;
+                db.miningDAO().update(mining);
+            }
+        });
+        super.onStop();
     }
 }

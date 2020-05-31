@@ -115,15 +115,6 @@ public class fragment1 extends Fragment {
 
             }
         });
-        GatherGrass.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //TODO FIX THIS TO WORK RIGHT
-                currentGrassCount++;
-                returnText = currentGrassCount+"";
-                GrassLabel.setText(returnText);
-            }
-        });
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -138,10 +129,26 @@ public class fragment1 extends Fragment {
                 }
                 else{
                     gathering = db.gatheringDAO().getGatherer();
-                    GrassLabel.setText(gathering.grass);
-                    WaterLabel.setText(gathering.water);
-                    WoodLabel.setText(gathering.wood);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            GrassLabel.setText(gathering.grass);
+                            WaterLabel.setText(gathering.water);
+                            WoodLabel.setText(gathering.wood);
+                        }
+                    });
                 }
+            }
+        });
+
+
+        GatherGrass.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO FIX THIS TO WORK RIGHT
+                currentGrassCount++;
+                returnText = currentGrassCount+"";
+                GrassLabel.setText(returnText);
             }
         });
 
