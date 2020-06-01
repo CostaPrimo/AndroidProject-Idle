@@ -1,5 +1,8 @@
 package com.example.theidlegame;
 
+
+
+import android.os.AsyncTask;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,10 +15,18 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
+
+import com.example.theidlegame.database.AppDatabase;
+import com.example.theidlegame.database.Gathering;
 
 public class fragment1 extends Fragment {
 
     private static final String TAG = "Fragment 1";
+
+    protected AppDatabase db;
+    protected Gathering gathering;
+
     private String returnText;
 
     private Button btn1fragment1;
@@ -42,6 +53,7 @@ public class fragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment1,container,false);
+        db = AppDatabase.getAppDatabase(getActivity());
         btn1fragment1 = (Button) v.findViewById(R.id.btn1fragment1);
         btn2fragment1 = (Button) v.findViewById(R.id.btn2fragment1);
         btn3fragment1 = (Button) v.findViewById(R.id.btn3fragment1);
@@ -103,6 +115,36 @@ public class fragment1 extends Fragment {
 
             }
         });
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (db.gatheringDAO().counGathers() == 0){
+                    gathering = new Gathering();
+                    gathering.key1 = "1";
+                    gathering.grass = "0";
+                    gathering.water = "0";
+                    gathering.wood = "0";
+                    db.gatheringDAO().insert(gathering);
+                }
+                else{
+                    gathering = db.gatheringDAO().getGatherer();
+                    currentGrassCount = Integer.parseInt(gathering.grass);
+                    currentWoodCount = Integer.parseInt(gathering.wood);
+                    currentWaterCount = Integer.parseInt(gathering.water);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            GrassLabel.setText(currentGrassCount+"");
+                            WaterLabel.setText(currentWaterCount+"");
+                            WoodLabel.setText(currentWoodCount+"");
+                        }
+                    });
+                }
+            }
+        });
+
+
         GatherGrass.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -112,6 +154,8 @@ public class fragment1 extends Fragment {
                 GrassLabel.setText(returnText);
             }
         });
+
+
         CollectGrass.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -174,6 +218,7 @@ public class fragment1 extends Fragment {
                 ((MainActivity)getActivity()).passData("titanium", returnText);
             }
         });
+
         return v;
     }
 
@@ -208,5 +253,22 @@ public class fragment1 extends Fragment {
         returnText = currentWaterCount+"";
         WaterLabel.setText(returnText);
         super.onResume();
+    }
+
+    @Override
+    public void onStop() {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                String currentGrass = GrassLabel.getText().toString();
+                String currentWater = WaterLabel.getText().toString();
+                String currentWood = WoodLabel.getText().toString();
+                gathering.grass = currentGrass;
+                gathering.wood = currentWood;
+                gathering.water = currentWater;
+                db.gatheringDAO().update(gathering);
+            }
+        });
+        super.onStop();
     }
 }
