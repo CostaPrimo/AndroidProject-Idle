@@ -129,12 +129,15 @@ public class fragment1 extends Fragment {
                 }
                 else{
                     gathering = db.gatheringDAO().getGatherer();
+                    currentGrassCount = Integer.parseInt(gathering.grass);
+                    currentWoodCount = Integer.parseInt(gathering.wood);
+                    currentWaterCount = Integer.parseInt(gathering.water);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            GrassLabel.setText(gathering.grass);
-                            WaterLabel.setText(gathering.water);
-                            WoodLabel.setText(gathering.wood);
+                            GrassLabel.setText(currentGrassCount+"");
+                            WaterLabel.setText(currentWaterCount+"");
+                            WoodLabel.setText(currentWoodCount+"");
                         }
                     });
                 }

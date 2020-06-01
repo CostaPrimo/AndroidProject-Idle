@@ -142,15 +142,21 @@ public class fragment3 extends Fragment {
                 }
                 else{
                     mining = db.miningDAO().getMiner();
+                    rockCount = Integer.parseInt(mining.stone);
+                    copperCount = Integer.parseInt(mining.copper);
+                    ironCount = Integer.parseInt(mining.iron);
+                    diamondCount = Integer.parseInt(mining.diamond);
+                    titaniumCount = Integer.parseInt(mining.titanium);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             // This code will always run on the UI thread, therefore is safe to modify UI elements.
-                            RockLabel.setText(mining.stone);
-                            CopperLabel.setText(mining.copper);
-                            IronLabel.setText(mining.iron);
-                            DiamondLabel.setText(mining.diamond);
-                            TitaniumLabel.setText((mining.titanium));
+                            RockLabel.setText(rockCount+"");
+                            CopperLabel.setText(copperCount+"");
+                            IronLabel.setText(ironCount+"");
+                            DiamondLabel.setText(diamondCount+"");
+                            TitaniumLabel.setText(titaniumCount+"");
+
                         }
                     });
                 }
