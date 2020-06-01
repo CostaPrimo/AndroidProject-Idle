@@ -52,15 +52,6 @@
         android:layout_below="@+id/btn4fragment1"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/gathergrassbtn"
-        android:text="@string/GatherGrassName"/>
-
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gathergrassbtn"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
         android:id="@+id/collectgrassbtn"
         android:text="@string/CollectGrassButtonName"/>
 
@@ -87,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/collectwaterbtn"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:text="Buy Zebra?1?"
         android:id="@+id/zebrabutton"
         />

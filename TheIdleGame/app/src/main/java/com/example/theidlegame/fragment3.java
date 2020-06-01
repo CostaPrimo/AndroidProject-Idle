@@ -1,24 +1,16 @@
 package com.example.theidlegame;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-
 import com.example.theidlegame.database.AppDatabase;
 import com.example.theidlegame.database.Mining;
-
-import org.w3c.dom.Text;
-
 
 public class fragment3 extends Fragment {
 
@@ -60,8 +52,6 @@ public class fragment3 extends Fragment {
         btn2fragment3 = (Button) v.findViewById(R.id.btn2fragment3);
         btn3fragment3 = (Button) v.findViewById(R.id.btn3fragment3);
         btn4fragment3 = (Button) v.findViewById(R.id.btn4fragment3);
-        Log.i("fragment created", "fragment1 onCreateView");
-
 
         RockButton = (Button) v.findViewById(R.id.gatherrockbtn);
         CopperButton = (Button) v.findViewById(R.id.gathercopperbtn);
@@ -75,13 +65,9 @@ public class fragment3 extends Fragment {
         DiamondLabel = (TextView) v.findViewById(R.id.MineDiamondsLabel);
         TitaniumLabel = (TextView) v.findViewById(R.id.MineTitaniumLabel);
 
-        Log.i("fragment created", "fragment3 onCreateView");
-
-
         btn1fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -93,7 +79,6 @@ public class fragment3 extends Fragment {
         btn2fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -105,7 +90,6 @@ public class fragment3 extends Fragment {
         btn3fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -117,7 +101,6 @@ public class fragment3 extends Fragment {
         btn4fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -151,91 +134,126 @@ public class fragment3 extends Fragment {
                         @Override
                         public void run() {
                             // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                            if(rockCount<2){
+                                CopperButton.setClickable(false);
+                            }
+                            if(copperCount<3){
+                                IronButton.setClickable(false);
+                            }
+                            if(ironCount<4){
+                                DiamondButton.setClickable(false);
+                            }
+                            if(diamondCount<5){
+                                TitaniumButton.setClickable(false);
+                            }
                             RockLabel.setText(rockCount+"");
                             CopperLabel.setText(copperCount+"");
                             IronLabel.setText(ironCount+"");
                             DiamondLabel.setText(diamondCount+"");
                             TitaniumLabel.setText(titaniumCount+"");
-
                         }
                     });
                 }
             }
         });
 
-
         RockButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
                 rockCount++;
+                if(((MainActivity)getActivity()).accessData("upgrade3").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
+                if(((MainActivity)getActivity()).accessData("upgrade4").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
+                if(((MainActivity)getActivity()).accessData("upgrade5").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
+                if(((MainActivity)getActivity()).accessData("upgrade6").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
                 returnText = rockCount+"";
                 RockLabel.setText(returnText);
+                if(rockCount>=2 && !CopperButton.isClickable()){
+                    CopperButton.setClickable(true);
+                }
             }
         });
         CopperButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                copperCount++;
-                returnText = copperCount+"";
-                CopperLabel.setText(returnText);
+                if(rockCount>=2) {
+                    copperCount++;
+                    returnText = copperCount + "";
+                    CopperLabel.setText(returnText);
+                    rockCount-=2;
+                    returnText = rockCount + "";
+                    RockLabel.setText(returnText);
+                }
+                if(rockCount<2){
+                    CopperButton.setClickable(false);
+                }
+                if(copperCount>=3 && !IronButton.isClickable()){
+                    IronButton.setClickable(true);
+                }
             }
         });
         IronButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                ironCount++;
-                returnText = ironCount+"";
-                IronLabel.setText(returnText);
+                if(copperCount>=3) {
+                    ironCount++;
+                    returnText = ironCount + "";
+                    IronLabel.setText(returnText);
+                    copperCount-=3;
+                    returnText = copperCount+"";
+                    CopperLabel.setText(returnText);
+                }
+                if(copperCount<3 && !IronButton.isClickable()){
+                    IronButton.setClickable(false);
+                }
+                if(ironCount>=4 && !DiamondButton.isClickable()){
+                    DiamondButton.setClickable(true);
+                }
             }
         });
         DiamondButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                diamondCount++;
-                returnText = diamondCount+"";
-                DiamondLabel.setText(returnText);
+                if(ironCount>=4) {
+                    diamondCount++;
+                    returnText = diamondCount + "";
+                    DiamondLabel.setText(returnText);
+                    ironCount-=4;
+                    returnText = ironCount+"";
+                    IronLabel.setText(returnText);
+                }
+                if(ironCount<4){
+                    DiamondButton.setClickable(false);
+                }
+                if(diamondCount>=5 && !TitaniumButton.isClickable()){
+                    TitaniumButton.setClickable(true);
+                }
             }
         });
         TitaniumButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                titaniumCount++;
-                returnText = titaniumCount+"";
-                TitaniumLabel.setText(returnText);
+                if(diamondCount>=5) {
+                    titaniumCount++;
+                    returnText = titaniumCount + "";
+                    TitaniumLabel.setText(returnText);
+                    diamondCount-=5;
+                    returnText= diamondCount + "";
+                    DiamondLabel.setText(returnText);
+                }
+                if(diamondCount<5){
+                    TitaniumButton.setClickable(false);
+                }
             }
         });
-
         return v;
-    }
-
-
-
-    @Override
-    public void onPause() {
-        Log.i("fragment paused", "fragment 3 paused");
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        //SetValuesCorrectly
-        returnText = rockCount+"";
-        RockLabel.setText(returnText);
-        returnText = copperCount+"";
-        CopperLabel.setText(returnText);
-        returnText = ironCount+"";
-        IronLabel.setText(returnText);
-        returnText = diamondCount+"";
-        DiamondLabel.setText(returnText);
-        returnText = titaniumCount+"";
-        TitaniumLabel.setText(returnText);
-        super.onResume();
-
     }
 
     @Override
