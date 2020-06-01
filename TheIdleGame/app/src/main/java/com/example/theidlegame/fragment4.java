@@ -1,7 +1,6 @@
 package com.example.theidlegame;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,33 +46,28 @@ public class fragment4 extends Fragment {
         ironValue = (TextView) v.findViewById(R.id.ironvalue);
         diamondValue = (TextView) v.findViewById(R.id.diamondvalue);
         titaniumValue = (TextView) v.findViewById(R.id.titaniumvalue);
-        Log.i("fragment created", "fragment4 onCreateView");
 
         btn1fragment4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).setViewPager(0);
             }
         });
         btn2fragment4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).setViewPager(2);
             }
         });
         btn3fragment4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).setViewPager(4);
             }
         });
         btn4fragment4.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).setViewPager(6);
             }
         });
@@ -81,15 +75,7 @@ public class fragment4 extends Fragment {
     }
 
     @Override
-    public void onPause() {
-        Log.i("fragment paused", "fragment 4 paused");
-        //TODO ADD SAVE TO DATABASE & TIME CHECK
-        super.onPause();
-    }
-
-    @Override
     public void onResume() {
-        //SetValuesCorrectly
         chsqn = ((MainActivity)getActivity()).accessData("grass");
         grassValue.setText(chsqn);
         chsqn = ((MainActivity)getActivity()).accessData("wood");

@@ -1,10 +1,8 @@
 package com.example.theidlegame;
 
 import android.os.AsyncTask;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +63,6 @@ public class fragment1 extends Fragment {
         GrassLabel = (TextView) v.findViewById(R.id.GatherGrassLabel);
         WoodLabel = (TextView) v.findViewById(R.id.GatherWoodLabel);
         WaterLabel = (TextView) v.findViewById(R.id.CollectWaterLabel);
-        Log.i("fragment created", "fragment1 onCreateView");
 
         btn1fragment1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -140,22 +137,9 @@ public class fragment1 extends Fragment {
             }
         });
 
-
-        GatherGrass.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //TODO FIX THIS TO WORK RIGHT
-                currentGrassCount++;
-                returnText = currentGrassCount+"";
-                GrassLabel.setText(returnText);
-            }
-        });
-
-
         CollectGrass.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
                 currentGrassCount++;
                 returnText = currentGrassCount+"";
                 GrassLabel.setText(returnText);
@@ -167,7 +151,6 @@ public class fragment1 extends Fragment {
         CollectWood.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
                 if (currentGrassCount >= 10) {
                     currentWoodCount++;
                     currentGrassCount-=10;
@@ -187,7 +170,6 @@ public class fragment1 extends Fragment {
         CollectWater.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
                 if(currentWoodCount>=5) {
                     currentWaterCount++;
                     returnText = currentWaterCount + "";
@@ -204,7 +186,6 @@ public class fragment1 extends Fragment {
         BuyZebra.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
                 //If the planets are aligned...
                 returnText = "You Bought a Zebra";
                 BuyZebra.setText(returnText);
@@ -216,13 +197,6 @@ public class fragment1 extends Fragment {
         });
 
         return v;
-    }
-
-    @Override
-    public void onPause() {
-        Log.i("fragment paused", "fragment 1 paused");
-        //TODO ADD SAVE TO DATABASE & TIME CHECK
-        super.onPause();
     }
 
     @Override

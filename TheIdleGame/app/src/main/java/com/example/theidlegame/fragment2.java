@@ -1,7 +1,6 @@
 package com.example.theidlegame;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,13 @@ public class fragment2 extends Fragment {
     private Button upgrade5;
     private Button upgrade6;
 
+    private boolean isunlocked1;
+    private boolean isunlocked2;
+    private boolean isunlocked3;
+    private boolean isunlocked4;
+    private boolean isunlocked5;
+    private boolean isunlocked6;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +46,6 @@ public class fragment2 extends Fragment {
         upgrade4 = (Button) v.findViewById(R.id.upgrade4);
         upgrade5 = (Button) v.findViewById(R.id.upgrade5);
         upgrade6 = (Button) v.findViewById(R.id.upgrade6);
-        Log.i("fragment created", "fragment2 onCreateView");
 
         btn1fragment2.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,7 +78,10 @@ public class fragment2 extends Fragment {
         upgrade1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
+                int currentgrassCount = Integer.parseInt(((MainActivity)getActivity()).accessData("grass").toString());
+                if (currentgrassCount>=500){
+
+                }
             }
         });
         upgrade2.setOnClickListener(new View.OnClickListener(){
@@ -108,12 +116,6 @@ public class fragment2 extends Fragment {
         });
 
         return v;
-    }
-    @Override
-    public void onPause() {
-        Log.i("fragment paused", "fragment 2 paused");
-        //TODO ADD SAVE TO DATABASE & TIME CHECK
-        super.onPause();
     }
 
     @Override

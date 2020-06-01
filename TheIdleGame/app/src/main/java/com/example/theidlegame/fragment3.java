@@ -1,9 +1,7 @@
 package com.example.theidlegame;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +52,6 @@ public class fragment3 extends Fragment {
         btn2fragment3 = (Button) v.findViewById(R.id.btn2fragment3);
         btn3fragment3 = (Button) v.findViewById(R.id.btn3fragment3);
         btn4fragment3 = (Button) v.findViewById(R.id.btn4fragment3);
-        Log.i("fragment created", "fragment1 onCreateView");
-
 
         RockButton = (Button) v.findViewById(R.id.gatherrockbtn);
         CopperButton = (Button) v.findViewById(R.id.gathercopperbtn);
@@ -69,13 +65,9 @@ public class fragment3 extends Fragment {
         DiamondLabel = (TextView) v.findViewById(R.id.MineDiamondsLabel);
         TitaniumLabel = (TextView) v.findViewById(R.id.MineTitaniumLabel);
 
-        Log.i("fragment created", "fragment3 onCreateView");
-
-
         btn1fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -87,7 +79,6 @@ public class fragment3 extends Fragment {
         btn2fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -99,7 +90,6 @@ public class fragment3 extends Fragment {
         btn3fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -111,7 +101,6 @@ public class fragment3 extends Fragment {
         btn4fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //Nagivate to fragment
                 ((MainActivity)getActivity()).passData("rock", RockLabel.getText());
                 ((MainActivity)getActivity()).passData("copper", CopperLabel.getText());
                 ((MainActivity)getActivity()).passData("iron", IronLabel.getText());
@@ -242,21 +231,11 @@ public class fragment3 extends Fragment {
                 }
             }
         });
-
         return v;
-    }
-
-
-
-    @Override
-    public void onPause() {
-        Log.i("fragment paused", "fragment 3 paused");
-        super.onPause();
     }
 
     @Override
     public void onResume() {
-        //SetValuesCorrectly
         if(rockCount<2){
             CopperButton.setClickable(false);
         }
@@ -269,7 +248,6 @@ public class fragment3 extends Fragment {
         if(diamondCount<5){
             TitaniumButton.setClickable(false);
         }
-
         returnText = rockCount+"";
         RockLabel.setText(returnText);
         returnText = copperCount+"";
@@ -281,7 +259,6 @@ public class fragment3 extends Fragment {
         returnText = titaniumCount+"";
         TitaniumLabel.setText(returnText);
         super.onResume();
-
     }
 
     @Override
