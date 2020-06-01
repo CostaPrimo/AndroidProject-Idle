@@ -1,6 +1,5 @@
 package com.example.theidlegame;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;

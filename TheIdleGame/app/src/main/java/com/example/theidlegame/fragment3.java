@@ -1,6 +1,5 @@
 package com.example.theidlegame;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.w3c.dom.Text;
 
 public class fragment3 extends Fragment {
 
@@ -116,46 +114,85 @@ public class fragment3 extends Fragment {
         RockButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
                 rockCount++;
                 returnText = rockCount+"";
                 RockLabel.setText(returnText);
+                if(rockCount>=2 && !CopperButton.isClickable()){
+                    CopperButton.setClickable(true);
+                }
             }
         });
         CopperButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                copperCount++;
-                returnText = copperCount+"";
-                CopperLabel.setText(returnText);
+                if(rockCount>=2) {
+                    copperCount++;
+                    returnText = copperCount + "";
+                    CopperLabel.setText(returnText);
+                    rockCount-=2;
+                    returnText = rockCount + "";
+                    RockLabel.setText(returnText);
+                }
+                if(rockCount<2){
+                    CopperButton.setClickable(false);
+                }
+                if(copperCount>=3 && !IronButton.isClickable()){
+                    IronButton.setClickable(true);
+                }
             }
         });
         IronButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                ironCount++;
-                returnText = ironCount+"";
-                IronLabel.setText(returnText);
+                if(copperCount>=3) {
+                    ironCount++;
+                    returnText = ironCount + "";
+                    IronLabel.setText(returnText);
+                    copperCount-=3;
+                    returnText = copperCount+"";
+                    CopperLabel.setText(returnText);
+                }
+                if(copperCount<3 && !IronButton.isClickable()){
+                    IronButton.setClickable(false);
+                }
+                if(ironCount>=4 && !DiamondButton.isClickable()){
+                    DiamondButton.setClickable(true);
+                }
             }
         });
         DiamondButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                diamondCount++;
-                returnText = diamondCount+"";
-                DiamondLabel.setText(returnText);
+                if(ironCount>=4) {
+                    diamondCount++;
+                    returnText = diamondCount + "";
+                    DiamondLabel.setText(returnText);
+                    ironCount-=4;
+                    returnText = ironCount+"";
+                    IronLabel.setText(returnText);
+                }
+                if(ironCount<4){
+                    DiamondButton.setClickable(false);
+                }
+                if(diamondCount>=5 && !TitaniumButton.isClickable()){
+                    TitaniumButton.setClickable(true);
+                }
             }
         });
         TitaniumButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO
-                titaniumCount++;
-                returnText = titaniumCount+"";
-                TitaniumLabel.setText(returnText);
+                if(diamondCount>=5) {
+                    titaniumCount++;
+                    returnText = titaniumCount + "";
+                    TitaniumLabel.setText(returnText);
+                    diamondCount-=5;
+                    returnText= diamondCount + "";
+                    DiamondLabel.setText(returnText);
+                }
+                if(diamondCount<5){
+                    TitaniumButton.setClickable(false);
+                }
             }
         });
         return v;
@@ -171,6 +208,19 @@ public class fragment3 extends Fragment {
     @Override
     public void onResume() {
         //SetValuesCorrectly
+        if(rockCount<2){
+            CopperButton.setClickable(false);
+        }
+        if(copperCount<3){
+            IronButton.setClickable(false);
+        }
+        if(ironCount<4){
+            DiamondButton.setClickable(false);
+        }
+        if(diamondCount<5){
+            TitaniumButton.setClickable(false);
+        }
+
         returnText = rockCount+"";
         RockLabel.setText(returnText);
         returnText = copperCount+"";
