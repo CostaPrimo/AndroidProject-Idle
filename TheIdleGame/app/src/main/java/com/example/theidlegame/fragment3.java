@@ -1,5 +1,7 @@
 package com.example.theidlegame;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,16 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import com.example.theidlegame.database.AppDatabase;
+import com.example.theidlegame.database.Mining;
 
 public class fragment3 extends Fragment {
 
     private static final String TAG = "Fragment 3";
-    private String returnText;
 
+    protected AppDatabase db;
+    protected Mining mining;
+
+    private String returnText;
     private Button btn1fragment3;
     private Button btn2fragment3;
     private Button btn3fragment3;
@@ -44,10 +49,13 @@ public class fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment3,container,false);
+        db = AppDatabase.getAppDatabase(getActivity());
         btn1fragment3 = (Button) v.findViewById(R.id.btn1fragment3);
         btn2fragment3 = (Button) v.findViewById(R.id.btn2fragment3);
         btn3fragment3 = (Button) v.findViewById(R.id.btn3fragment3);
         btn4fragment3 = (Button) v.findViewById(R.id.btn4fragment3);
+        Log.i("fragment created", "fragment1 onCreateView");
+
 
         RockButton = (Button) v.findViewById(R.id.gatherrockbtn);
         CopperButton = (Button) v.findViewById(R.id.gathercopperbtn);
@@ -62,6 +70,7 @@ public class fragment3 extends Fragment {
         TitaniumLabel = (TextView) v.findViewById(R.id.MineTitaniumLabel);
 
         Log.i("fragment created", "fragment3 onCreateView");
+
 
         btn1fragment3.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -111,6 +120,44 @@ public class fragment3 extends Fragment {
                 ((MainActivity)getActivity()).setViewPager(6);
             }
         });
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (db.miningDAO().countMiners() == 0){
+                    mining = new Mining();
+                    mining.key1 = "1";
+                    mining.stone = "0";
+                    mining.copper = "0";
+                    mining.iron = "0";
+                    mining.diamond = "0";
+                    mining.titanium = "0";
+                    db.miningDAO().insert(mining);
+                }
+                else{
+                    mining = db.miningDAO().getMiner();
+                    rockCount = Integer.parseInt(mining.stone);
+                    copperCount = Integer.parseInt(mining.copper);
+                    ironCount = Integer.parseInt(mining.iron);
+                    diamondCount = Integer.parseInt(mining.diamond);
+                    titaniumCount = Integer.parseInt(mining.titanium);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                            RockLabel.setText(rockCount+"");
+                            CopperLabel.setText(copperCount+"");
+                            IronLabel.setText(ironCount+"");
+                            DiamondLabel.setText(diamondCount+"");
+                            TitaniumLabel.setText(titaniumCount+"");
+
+                        }
+                    });
+                }
+            }
+        });
+
+
         RockButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -195,13 +242,15 @@ public class fragment3 extends Fragment {
                 }
             }
         });
+
         return v;
     }
+
+
 
     @Override
     public void onPause() {
         Log.i("fragment paused", "fragment 3 paused");
-        //TODO ADD SAVE TO DATABASE & TIME CHECK
         super.onPause();
     }
 
@@ -232,5 +281,27 @@ public class fragment3 extends Fragment {
         returnText = titaniumCount+"";
         TitaniumLabel.setText(returnText);
         super.onResume();
+
+    }
+
+    @Override
+    public void onStop() {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                String currentStone = RockLabel.getText().toString();
+                String currentCopper = CopperLabel.getText().toString();
+                String currentIron = IronLabel.getText().toString();
+                String currentDiamond = DiamondLabel.getText().toString();
+                String currentTitanium = TitaniumLabel.getText().toString();
+                mining.stone = currentStone;
+                mining.copper = currentCopper;
+                mining.iron = currentIron;
+                mining.diamond = currentDiamond;
+                mining.titanium = currentTitanium;
+                db.miningDAO().update(mining);
+            }
+        });
+        super.onStop();
     }
 }
