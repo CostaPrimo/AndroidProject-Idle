@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.room.Room;
 import com.example.theidlegame.database.AppDatabase;
 import com.example.theidlegame.database.Gathering;
 
@@ -28,7 +27,6 @@ public class fragment1 extends Fragment {
     private Button btn3fragment1;
     private Button btn4fragment1;
 
-    private Button GatherGrass;
     private Button CollectGrass;
     private Button CollectWood;
     private Button CollectWater;
@@ -53,7 +51,6 @@ public class fragment1 extends Fragment {
         btn3fragment1 = (Button) v.findViewById(R.id.btn3fragment1);
         btn4fragment1 = (Button) v.findViewById(R.id.btn4fragment1);
 
-        GatherGrass = (Button) v.findViewById(R.id.gathergrassbtn);
         CollectGrass = (Button) v.findViewById(R.id.collectgrassbtn);
         CollectWood = (Button) v.findViewById(R.id.gatherwoodbtn);
         CollectWater = (Button) v.findViewById(R.id.collectwaterbtn);
@@ -128,9 +125,26 @@ public class fragment1 extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            GrassLabel.setText(currentGrassCount+"");
-                            WaterLabel.setText(currentWaterCount+"");
-                            WoodLabel.setText(currentWoodCount+"");
+                            if(currentGrassCount<10){
+                                CollectWood.setClickable(false);
+                            }
+                            if(currentWoodCount<5){
+                                CollectWater.setClickable(false);
+                            }
+                            int tempcount = Integer.parseInt(((MainActivity)getActivity()).accessData("titanium").toString());
+                            if(tempcount<1000){
+                                BuyZebra.setClickable(false);
+                                BuyZebra.setBackgroundColor(Color.parseColor("#f1f1f1"));
+                            }
+                            else {
+                                BuyZebra.setBackgroundColor(Color.parseColor("#aa0000"));
+                            }
+                            returnText = currentGrassCount+"";
+                            GrassLabel.setText(returnText);
+                            returnText = currentWoodCount+"";
+                            WoodLabel.setText(returnText);
+                            returnText = currentWaterCount+"";
+                            WaterLabel.setText(returnText);
                         }
                     });
                 }
@@ -141,6 +155,9 @@ public class fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
                 currentGrassCount++;
+                if(((MainActivity)getActivity()).accessData("upgrade1").toString().equalsIgnoreCase("true")){
+                    currentGrassCount+=4;
+                }
                 returnText = currentGrassCount+"";
                 GrassLabel.setText(returnText);
                 if(currentGrassCount>=10 && !CollectWood.isClickable()){
@@ -153,6 +170,9 @@ public class fragment1 extends Fragment {
             public void onClick(View v) {
                 if (currentGrassCount >= 10) {
                     currentWoodCount++;
+                    if(((MainActivity)getActivity()).accessData("upgrade2").toString().equalsIgnoreCase("true")){
+                        currentWoodCount+=2;
+                    }
                     currentGrassCount-=10;
                     returnText = currentWoodCount + "";
                     WoodLabel.setText(returnText);
@@ -195,34 +215,7 @@ public class fragment1 extends Fragment {
                 ((MainActivity)getActivity()).passData("titanium", returnText);
             }
         });
-
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        if(currentGrassCount<10){
-            CollectWood.setClickable(false);
-        }
-        if(currentWoodCount<5){
-            CollectWater.setClickable(false);
-        }
-        int tempcount = Integer.parseInt(((MainActivity)getActivity()).accessData("titanium").toString());
-        if(tempcount<1000){
-            BuyZebra.setClickable(false);
-            BuyZebra.setBackgroundColor(Color.parseColor("#f1f1f1"));
-        }
-        else {
-            BuyZebra.setBackgroundColor(Color.parseColor("#aa0000"));
-        }
-        //SetValuesCorrectly
-        returnText = currentGrassCount+"";
-        GrassLabel.setText(returnText);
-        returnText = currentWoodCount+"";
-        WoodLabel.setText(returnText);
-        returnText = currentWaterCount+"";
-        WaterLabel.setText(returnText);
-        super.onResume();
     }
 
     @Override

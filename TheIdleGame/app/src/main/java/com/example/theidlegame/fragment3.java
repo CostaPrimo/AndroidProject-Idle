@@ -134,23 +134,45 @@ public class fragment3 extends Fragment {
                         @Override
                         public void run() {
                             // This code will always run on the UI thread, therefore is safe to modify UI elements.
+                            if(rockCount<2){
+                                CopperButton.setClickable(false);
+                            }
+                            if(copperCount<3){
+                                IronButton.setClickable(false);
+                            }
+                            if(ironCount<4){
+                                DiamondButton.setClickable(false);
+                            }
+                            if(diamondCount<5){
+                                TitaniumButton.setClickable(false);
+                            }
                             RockLabel.setText(rockCount+"");
                             CopperLabel.setText(copperCount+"");
                             IronLabel.setText(ironCount+"");
                             DiamondLabel.setText(diamondCount+"");
                             TitaniumLabel.setText(titaniumCount+"");
-
                         }
                     });
                 }
             }
         });
 
-
         RockButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 rockCount++;
+                if(((MainActivity)getActivity()).accessData("upgrade3").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
+                if(((MainActivity)getActivity()).accessData("upgrade4").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
+                if(((MainActivity)getActivity()).accessData("upgrade5").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
+                if(((MainActivity)getActivity()).accessData("upgrade6").toString().equalsIgnoreCase("true")){
+                    rockCount++;
+                }
                 returnText = rockCount+"";
                 RockLabel.setText(returnText);
                 if(rockCount>=2 && !CopperButton.isClickable()){
@@ -232,33 +254,6 @@ public class fragment3 extends Fragment {
             }
         });
         return v;
-    }
-
-    @Override
-    public void onResume() {
-        if(rockCount<2){
-            CopperButton.setClickable(false);
-        }
-        if(copperCount<3){
-            IronButton.setClickable(false);
-        }
-        if(ironCount<4){
-            DiamondButton.setClickable(false);
-        }
-        if(diamondCount<5){
-            TitaniumButton.setClickable(false);
-        }
-        returnText = rockCount+"";
-        RockLabel.setText(returnText);
-        returnText = copperCount+"";
-        CopperLabel.setText(returnText);
-        returnText = ironCount+"";
-        IronLabel.setText(returnText);
-        returnText = diamondCount+"";
-        DiamondLabel.setText(returnText);
-        returnText = titaniumCount+"";
-        TitaniumLabel.setText(returnText);
-        super.onResume();
     }
 
     @Override

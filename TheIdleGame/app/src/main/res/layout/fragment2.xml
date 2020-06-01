@@ -52,7 +52,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginStart="50dp"
         android:id="@+id/upgrade1"
-        android:text="Upgrade"
+        android:text="+4 Grass"
         />
 
     <Button
@@ -63,7 +63,7 @@
         android:layout_marginEnd="50dp"
         android:layout_alignParentEnd="true"
         android:id="@+id/upgrade2"
-        android:text="Upgrade"
+        android:text="+2 Wood"
         />
 
     <Button
@@ -73,7 +73,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="50dp"
         android:id="@+id/upgrade3"
-        android:text="Upgrade"
+        android:text="+1 Stone"
         />
 
     <Button
@@ -84,7 +84,7 @@
         android:layout_marginEnd="50dp"
         android:layout_alignParentEnd="true"
         android:id="@+id/upgrade4"
-        android:text="Upgrade"
+        android:text="+1 Stone"
         />
     <Button
         android:layout_width="150dp"
@@ -93,7 +93,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginStart="50dp"
         android:id="@+id/upgrade5"
-        android:text="Upgrade"
+        android:text="+1 Stone"
         />
     <Button
         android:layout_width="150dp"
@@ -103,7 +103,7 @@
         android:layout_marginEnd="50dp"
         android:layout_alignParentEnd="true"
         android:id="@+id/upgrade6"
-        android:text="Upgrade"
+        android:text="+1 Stone"
         />
 
 </RelativeLayout>

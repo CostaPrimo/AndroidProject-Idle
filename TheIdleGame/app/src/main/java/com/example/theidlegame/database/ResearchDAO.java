@@ -35,5 +35,5 @@ public interface ResearchDAO {
     int countResearch();
 
     @Query("Select * FROM research WHERE key1 = 1")
-    Mining getResearcher();
+    Research getResearcher();
 }
